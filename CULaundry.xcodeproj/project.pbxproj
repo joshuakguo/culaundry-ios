@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4BBA7EB561F1B11CA0CDA82F /* Pods_CULaundry.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E59EB3B1F0F33EAFF49C8E44 /* Pods_CULaundry.framework */; };
 		6DF4FFF2263C57AB00F14B8A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF4FFF1263C57AB00F14B8A /* AppDelegate.swift */; };
 		6DF4FFF4263C57AB00F14B8A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF4FFF3263C57AB00F14B8A /* SceneDelegate.swift */; };
 		6DF4FFF6263C57AB00F14B8A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF4FFF5263C57AB00F14B8A /* ViewController.swift */; };
@@ -24,6 +25,9 @@
 		6DF4FFFA263C57AD00F14B8A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6DF4FFFD263C57AD00F14B8A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6DF4FFFF263C57AD00F14B8A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C7E61836F5089633A93994B2 /* Pods-CULaundry.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CULaundry.debug.xcconfig"; path = "Target Support Files/Pods-CULaundry/Pods-CULaundry.debug.xcconfig"; sourceTree = "<group>"; };
+		E59EB3B1F0F33EAFF49C8E44 /* Pods_CULaundry.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CULaundry.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F9C6B764BAC41D3398BA7B79 /* Pods-CULaundry.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CULaundry.release.xcconfig"; path = "Target Support Files/Pods-CULaundry/Pods-CULaundry.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +35,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4BBA7EB561F1B11CA0CDA82F /* Pods_CULaundry.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6CBDEB993126F8F867E9718B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E59EB3B1F0F33EAFF49C8E44 /* Pods_CULaundry.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		6DF4FFE5263C57AB00F14B8A = {
 			isa = PBXGroup;
 			children = (
 				6DF4FFF0263C57AB00F14B8A /* CULaundry */,
 				6DF4FFEF263C57AB00F14B8A /* Products */,
+				FB94F3FAE3602932DB88BBD0 /* Pods */,
+				6CBDEB993126F8F867E9718B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -67,6 +82,16 @@
 			path = CULaundry;
 			sourceTree = "<group>";
 		};
+		FB94F3FAE3602932DB88BBD0 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C7E61836F5089633A93994B2 /* Pods-CULaundry.debug.xcconfig */,
+				F9C6B764BAC41D3398BA7B79 /* Pods-CULaundry.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -74,9 +99,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6DF40002263C57AD00F14B8A /* Build configuration list for PBXNativeTarget "CULaundry" */;
 			buildPhases = (
+				FCB7986F882D6158787B0F22 /* [CP] Check Pods Manifest.lock */,
 				6DF4FFEA263C57AB00F14B8A /* Sources */,
 				6DF4FFEB263C57AB00F14B8A /* Frameworks */,
 				6DF4FFEC263C57AB00F14B8A /* Resources */,
+				309F8C649CDDCF4099FB056D /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -131,6 +158,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		309F8C649CDDCF4099FB056D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CULaundry/Pods-CULaundry-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CULaundry/Pods-CULaundry-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CULaundry/Pods-CULaundry-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FCB7986F882D6158787B0F22 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-CULaundry-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		6DF4FFEA263C57AB00F14B8A /* Sources */ = {
@@ -283,6 +352,7 @@
 		};
 		6DF40003263C57AD00F14B8A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C7E61836F5089633A93994B2 /* Pods-CULaundry.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -296,12 +366,13 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.joshua.CULaundry;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
 		6DF40004263C57AD00F14B8A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F9C6B764BAC41D3398BA7B79 /* Pods-CULaundry.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -315,7 +386,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.joshua.CULaundry;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
