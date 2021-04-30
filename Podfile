@@ -8,5 +8,6 @@ target 'CULaundry' do
   # Pods for CULaundry
   pod 'Alamofire'
   pod 'SnapKit'
+  pod 'DropDown'
 
 end
