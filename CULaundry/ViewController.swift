@@ -15,7 +15,7 @@ class ViewController: UIViewController {
     
     let fakeLaundryRooms = ["Balch Hall", "Bauer Hall", "Clara Dickson Hall", "Court Hall", "George Jameson Hall", "Mary Donlon Hall", "Cook House", "Bethe House"]
     
-    let fakeHeaders = ["North Campus", "West Campus"]
+    let headers = ["North Campus"]
     let fakeSectionedLaundryRooms = [["Balch Hall", "Bauer Hall", "Clara Dickson Hall", "Court Hall", "George Jameson Hall", "Mary Donlon Hall"], ["Cook House", "Bethe House"]]
     
     let settingsButton = UIBarButtonItem()
@@ -29,14 +29,29 @@ class ViewController: UIViewController {
     var laundryRoomView: UICollectionView!
     let laundryRoomViewReuseIdentifier = "laundryRoomViewReuseIdentifier"
     let headerReuseIdentifier = "headerReuseIdentifier"
+    
+    var allLaundryRoomData: [[LaundryRoomShort]] = [[]]
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         view.backgroundColor = UIColor(red: 240/255, green: 240/255, blue: 240/255, alpha: 1)
         
+        createDummyData()
         setUpViews()
         setUpConstraints()
+        
+    }
+    
+    func createDummyData() {
+        let Hall1 = LaundryRoomShort(name: "Balch Hall", num_avail_wash: 3, num_avail_dry: 4)
+        let Hall2 = LaundryRoomShort(name: "Bauer Hall", num_avail_wash: 4, num_avail_dry: 3)
+        let Hall3 = LaundryRoomShort(name: "Clara Dickson Hall", num_avail_wash: 5, num_avail_dry: 8)
+        let Hall4 = LaundryRoomShort(name: "Court Hall", num_avail_wash: 2, num_avail_dry: 1)
+        let Hall5 = LaundryRoomShort(name: "George Jameson Hall", num_avail_wash: 4, num_avail_dry: 4)
+        let Hall6 = LaundryRoomShort(name: "Mary Donlon Hall", num_avail_wash: 10, num_avail_dry: 9)
+        let Hall7 = LaundryRoomShort(name: "Kay Hall", num_avail_wash: 2, num_avail_dry: 1)
+        allLaundryRoomData = [[Hall1, Hall2, Hall3, Hall4, Hall5, Hall6, Hall7]]
         
     }
         
@@ -79,6 +94,7 @@ class ViewController: UIViewController {
         view.addSubview(selectionTextView)
         
         dropDown.anchorView = selectionTextView
+        //TODO HAVE TO UPDATE THIS LINE HERE BC ITS NOT RIGHT
         dropDown.dataSource = fakeLaundryRooms
         dropDown.dismissMode = .automatic
         DropDown.appearance().textColor = UIColor(red: 50/255, green: 50/255, blue: 50/255, alpha: 1)
@@ -172,23 +188,23 @@ extension ViewController: UICollectionViewDelegateFlowLayout {
 
 extension ViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return fakeSectionedLaundryRooms[section].count
+        return allLaundryRoomData[section].count
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return fakeSectionedLaundryRooms.count
+        return allLaundryRoomData.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: laundryRoomViewReuseIdentifier, for: indexPath) as! LaundryRoomCollectionViewCell
         //Cell Configure statement
-        cell.configure(image: (UIImage(named: fakeSectionedLaundryRooms[indexPath.section][indexPath.row]) ?? UIImage(named: "Court Hall"))!, text: fakeSectionedLaundryRooms[indexPath.section][indexPath.row] )
+        cell.configure(image: (UIImage(named: allLaundryRoomData[indexPath.section][indexPath.row].name) ?? UIImage(named: "Court Hall"))!, text: allLaundryRoomData[indexPath.section][indexPath.row].name )
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: headerReuseIdentifier, for: indexPath) as! LaundryRoomHeaderView
-        header.label.text = fakeHeaders[indexPath.section]
+        header.label.text = headers[indexPath.section]
         return header
     }
     

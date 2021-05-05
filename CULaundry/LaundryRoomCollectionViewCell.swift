@@ -16,9 +16,9 @@ class LaundryRoomCollectionViewCell: UICollectionViewCell {
         super.init(frame: frame)
         
         layer.shadowColor = UIColor.lightGray.cgColor
-        layer.shadowOffset = CGSize(width: 0, height: 2.0)
-        layer.shadowRadius = 5.0
-        layer.shadowOpacity = 1.0
+        layer.shadowOffset = CGSize(width: 0, height: 1.0)
+        layer.shadowRadius = 3.0
+        layer.shadowOpacity = 0.5
         layer.cornerRadius = 8
         layer.masksToBounds = false
         

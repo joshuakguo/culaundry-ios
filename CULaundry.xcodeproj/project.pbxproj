@@ -25,6 +25,9 @@
 		6DF40024263E03A200F14B8A /* SettingsTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF40023263E03A200F14B8A /* SettingsTableHeaderView.swift */; };
 		6DF40028264222D300F14B8A /* LaundryRoomCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF40027264222D300F14B8A /* LaundryRoomCollectionViewCell.swift */; };
 		6DF4002B2642241900F14B8A /* LaundryRoomHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF4002A2642241900F14B8A /* LaundryRoomHeaderView.swift */; };
+		6DF4002E2643332400F14B8A /* LaundryRoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF4002D2643332400F14B8A /* LaundryRoom.swift */; };
+		6DF400302643361700F14B8A /* LaundryMachine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF4002F2643361700F14B8A /* LaundryMachine.swift */; };
+		6DF40032264339BC00F14B8A /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF40031264339BC00F14B8A /* NetworkManager.swift */; };
 		6DF4FFF2263C57AB00F14B8A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF4FFF1263C57AB00F14B8A /* AppDelegate.swift */; };
 		6DF4FFF4263C57AB00F14B8A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF4FFF3263C57AB00F14B8A /* SceneDelegate.swift */; };
 		6DF4FFF6263C57AB00F14B8A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF4FFF5263C57AB00F14B8A /* ViewController.swift */; };
@@ -51,6 +54,9 @@
 		6DF40023263E03A200F14B8A /* SettingsTableHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableHeaderView.swift; sourceTree = "<group>"; };
 		6DF40027264222D300F14B8A /* LaundryRoomCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaundryRoomCollectionViewCell.swift; sourceTree = "<group>"; };
 		6DF4002A2642241900F14B8A /* LaundryRoomHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaundryRoomHeaderView.swift; sourceTree = "<group>"; };
+		6DF4002D2643332400F14B8A /* LaundryRoom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaundryRoom.swift; sourceTree = "<group>"; };
+		6DF4002F2643361700F14B8A /* LaundryMachine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaundryMachine.swift; sourceTree = "<group>"; };
+		6DF40031264339BC00F14B8A /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		6DF4FFEE263C57AB00F14B8A /* CULaundry.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CULaundry.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6DF4FFF1263C57AB00F14B8A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6DF4FFF3263C57AB00F14B8A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -113,6 +119,15 @@
 			path = SettingsView;
 			sourceTree = "<group>";
 		};
+		6DF4002C264332FB00F14B8A /* Codables */ = {
+			isa = PBXGroup;
+			children = (
+				6DF4002D2643332400F14B8A /* LaundryRoom.swift */,
+				6DF4002F2643361700F14B8A /* LaundryMachine.swift */,
+			);
+			path = Codables;
+			sourceTree = "<group>";
+		};
 		6DF4FFE5263C57AB00F14B8A = {
 			isa = PBXGroup;
 			children = (
@@ -139,6 +154,8 @@
 				6DF4FFF5263C57AB00F14B8A /* ViewController.swift */,
 				6DF40027264222D300F14B8A /* LaundryRoomCollectionViewCell.swift */,
 				6DF4002A2642241900F14B8A /* LaundryRoomHeaderView.swift */,
+				6DF40031264339BC00F14B8A /* NetworkManager.swift */,
+				6DF4002C264332FB00F14B8A /* Codables */,
 				6DF40026264119BA00F14B8A /* SettingsView */,
 				6DF4FFF7263C57AB00F14B8A /* Main.storyboard */,
 				6DF4FFFA263C57AD00F14B8A /* Assets.xcassets */,
@@ -286,8 +303,11 @@
 			files = (
 				6DF40028264222D300F14B8A /* LaundryRoomCollectionViewCell.swift in Sources */,
 				6DF4FFF6263C57AB00F14B8A /* ViewController.swift in Sources */,
+				6DF4002E2643332400F14B8A /* LaundryRoom.swift in Sources */,
 				6DF4FFF2263C57AB00F14B8A /* AppDelegate.swift in Sources */,
+				6DF40032264339BC00F14B8A /* NetworkManager.swift in Sources */,
 				6DF4FFF4263C57AB00F14B8A /* SceneDelegate.swift in Sources */,
+				6DF400302643361700F14B8A /* LaundryMachine.swift in Sources */,
 				6DF40024263E03A200F14B8A /* SettingsTableHeaderView.swift in Sources */,
 				6DF40022263DEE6A00F14B8A /* SettingsTableViewCell.swift in Sources */,
 				6DF4002B2642241900F14B8A /* LaundryRoomHeaderView.swift in Sources */,
