@@ -15,8 +15,9 @@ class ViewController: UIViewController {
     
     let fakeLaundryRooms = ["Balch Hall", "Bauer Hall", "Clara Dickson Hall", "Court Hall", "George Jameson Hall", "Kay Hall", "Mary Donlon Hall"]
     
+    // NEXT PUSH, ALSO UPDATE THE GITIGNORE, GOOGLE THE GIT COMMANDS
+    let settingsButton = UIBarButtonItem()
     let navigationView = UIView()
-//    MAKE SETTING COG BUTTON RIGHT NAV BAR
     let titleView = UILabel()
     let selectionView = UIView()
     let selectionTextView = UILabel()
@@ -46,6 +47,13 @@ class ViewController: UIViewController {
         navigationItem.standardAppearance = appearance
         navigationItem.scrollEdgeAppearance = appearance
         navigationItem.compactAppearance = appearance
+        navigationItem.backButtonTitle = "Back"
+        
+        navigationItem.rightBarButtonItem = settingsButton
+        settingsButton.image = UIImage(systemName: "gearshape.fill")
+        settingsButton.tintColor = .white
+        settingsButton.action = #selector(settingsButtonPressed)
+        settingsButton.target = self
         
         navigationView.backgroundColor = cornellRed
         view.addSubview(navigationView)
@@ -62,7 +70,7 @@ class ViewController: UIViewController {
         
         selectionTextView.textColor = UIColor(red: 150/255, green: 150/255, blue: 150/255, alpha: 1)
         selectionTextView.font = UIFont(name: "Roboto-Regular", size: 16)
-        selectionTextView.text = "Select Laundry Room"
+        selectionTextView.text = "Select a Laundry Room"
         selectionTextView.textAlignment = .left
         selectionTextView.isUserInteractionEnabled = true
         let labelTapGesture = UITapGestureRecognizer(target:self,action:#selector(showDropDown))
@@ -72,6 +80,8 @@ class ViewController: UIViewController {
         dropDown.anchorView = selectionTextView
         dropDown.dataSource = fakeLaundryRooms
         dropDown.dismissMode = .automatic
+        DropDown.appearance().textColor = UIColor(red: 50/255, green: 50/255, blue: 50/255, alpha: 1)
+        DropDown.appearance().selectedTextColor = UIColor(red: 50/255, green: 50/255, blue: 50/255, alpha: 1)
         dropDown.bottomOffset = CGPoint(x: 0, y:(dropDown.anchorView?.plainView.bounds.height)!)
         dropDown.selectionAction = { [unowned self] (index: Int, item: String) in
             selectedLaundryRoom(index: index, item: item)
@@ -108,12 +118,17 @@ class ViewController: UIViewController {
     
     func selectedLaundryRoom(index: Int, item: String) {
         selectionTextView.text = item
-        selectionTextView.textColor = .black
+        selectionTextView.textColor = UIColor(red: 50/255, green: 50/255, blue: 50/255, alpha: 1)
         dropDown.hide()
     }
     
     @objc func showDropDown() {
         dropDown.show()
+    }
+    
+    @objc func settingsButtonPressed() {
+        let settingsViewController = SettingsViewController()
+        self.navigationController?.pushViewController(settingsViewController, animated: true)
     }
 
 }

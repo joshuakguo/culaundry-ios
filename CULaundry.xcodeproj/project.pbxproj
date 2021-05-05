@@ -20,6 +20,9 @@
 		6DF4001C263C61D300F14B8A /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6DF40010263C61D300F14B8A /* Roboto-Bold.ttf */; };
 		6DF4001D263C61D300F14B8A /* Roboto-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6DF40011263C61D300F14B8A /* Roboto-MediumItalic.ttf */; };
 		6DF4001E263C61D300F14B8A /* Roboto-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6DF40012263C61D300F14B8A /* Roboto-Light.ttf */; };
+		6DF40020263DE6FD00F14B8A /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF4001F263DE6FD00F14B8A /* SettingsViewController.swift */; };
+		6DF40022263DEE6A00F14B8A /* SettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF40021263DEE6A00F14B8A /* SettingsTableViewCell.swift */; };
+		6DF40024263E03A200F14B8A /* SettingsTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF40023263E03A200F14B8A /* SettingsTableHeaderView.swift */; };
 		6DF4FFF2263C57AB00F14B8A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF4FFF1263C57AB00F14B8A /* AppDelegate.swift */; };
 		6DF4FFF4263C57AB00F14B8A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF4FFF3263C57AB00F14B8A /* SceneDelegate.swift */; };
 		6DF4FFF6263C57AB00F14B8A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF4FFF5263C57AB00F14B8A /* ViewController.swift */; };
@@ -41,6 +44,9 @@
 		6DF40010263C61D300F14B8A /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Bold.ttf"; sourceTree = "<group>"; };
 		6DF40011263C61D300F14B8A /* Roboto-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-MediumItalic.ttf"; sourceTree = "<group>"; };
 		6DF40012263C61D300F14B8A /* Roboto-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Light.ttf"; sourceTree = "<group>"; };
+		6DF4001F263DE6FD00F14B8A /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		6DF40021263DEE6A00F14B8A /* SettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewCell.swift; sourceTree = "<group>"; };
+		6DF40023263E03A200F14B8A /* SettingsTableHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableHeaderView.swift; sourceTree = "<group>"; };
 		6DF4FFEE263C57AB00F14B8A /* CULaundry.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CULaundry.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6DF4FFF1263C57AB00F14B8A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6DF4FFF3263C57AB00F14B8A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -93,6 +99,16 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
+		6DF40026264119BA00F14B8A /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				6DF4001F263DE6FD00F14B8A /* SettingsViewController.swift */,
+				6DF40021263DEE6A00F14B8A /* SettingsTableViewCell.swift */,
+				6DF40023263E03A200F14B8A /* SettingsTableHeaderView.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
 		6DF4FFE5263C57AB00F14B8A = {
 			isa = PBXGroup;
 			children = (
@@ -117,6 +133,7 @@
 				6DF4FFF1263C57AB00F14B8A /* AppDelegate.swift */,
 				6DF4FFF3263C57AB00F14B8A /* SceneDelegate.swift */,
 				6DF4FFF5263C57AB00F14B8A /* ViewController.swift */,
+				6DF40026264119BA00F14B8A /* Settings */,
 				6DF4FFF7263C57AB00F14B8A /* Main.storyboard */,
 				6DF4FFFA263C57AD00F14B8A /* Assets.xcassets */,
 				6DF4FFFC263C57AD00F14B8A /* LaunchScreen.storyboard */,
@@ -264,6 +281,9 @@
 				6DF4FFF6263C57AB00F14B8A /* ViewController.swift in Sources */,
 				6DF4FFF2263C57AB00F14B8A /* AppDelegate.swift in Sources */,
 				6DF4FFF4263C57AB00F14B8A /* SceneDelegate.swift in Sources */,
+				6DF40024263E03A200F14B8A /* SettingsTableHeaderView.swift in Sources */,
+				6DF40022263DEE6A00F14B8A /* SettingsTableViewCell.swift in Sources */,
+				6DF40020263DE6FD00F14B8A /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
