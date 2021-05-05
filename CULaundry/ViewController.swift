@@ -13,9 +13,11 @@ class ViewController: UIViewController {
     
     private let cornellRed: UIColor = UIColor(red: 179/255, green: 27/255, blue: 27/255, alpha: 1)
     
-    let fakeLaundryRooms = ["Balch Hall", "Bauer Hall", "Clara Dickson Hall", "Court Hall", "George Jameson Hall", "Kay Hall", "Mary Donlon Hall"]
+    let fakeLaundryRooms = ["Balch Hall", "Bauer Hall", "Clara Dickson Hall", "Court Hall", "George Jameson Hall", "Mary Donlon Hall", "Cook House", "Bethe House"]
     
-    // NEXT PUSH, ALSO UPDATE THE GITIGNORE, GOOGLE THE GIT COMMANDS
+    let fakeHeaders = ["North Campus", "West Campus"]
+    let fakeSectionedLaundryRooms = [["Balch Hall", "Bauer Hall", "Clara Dickson Hall", "Court Hall", "George Jameson Hall", "Mary Donlon Hall"], ["Cook House", "Bethe House"]]
+    
     let settingsButton = UIBarButtonItem()
     let navigationView = UIView()
     let titleView = UILabel()
@@ -23,22 +25,21 @@ class ViewController: UIViewController {
     let selectionTextView = UILabel()
     let dropDown = DropDown()
     
+    let laundryRoomViewLayout = UICollectionViewFlowLayout()
+    var laundryRoomView: UICollectionView!
+    let laundryRoomViewReuseIdentifier = "laundryRoomViewReuseIdentifier"
+    let headerReuseIdentifier = "headerReuseIdentifier"
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        view.backgroundColor = .white
+        view.backgroundColor = UIColor(red: 240/255, green: 240/255, blue: 240/255, alpha: 1)
         
-        createDummyData()
         setUpViews()
         setUpConstraints()
         
     }
-    
-    func createDummyData() {
         
-    }
-    
     func setUpViews() {
         let appearance = UINavigationBarAppearance()
         appearance.configureWithTransparentBackground()
@@ -64,7 +65,7 @@ class ViewController: UIViewController {
         titleView.textAlignment = .left
         view.addSubview(titleView)
         
-        selectionView.backgroundColor = UIColor(red: 230/255, green: 230/255, blue: 230/255, alpha: 1)
+        selectionView.backgroundColor = UIColor(red: 235/255, green: 235/255, blue: 235/255, alpha: 1)
         selectionView.layer.cornerRadius = 8
         view.addSubview(selectionView)
         
@@ -86,6 +87,21 @@ class ViewController: UIViewController {
         dropDown.selectionAction = { [unowned self] (index: Int, item: String) in
             selectedLaundryRoom(index: index, item: item)
         }
+        
+        laundryRoomViewLayout.scrollDirection = .vertical
+        laundryRoomViewLayout.minimumLineSpacing = 15
+        laundryRoomViewLayout.minimumInteritemSpacing = 15
+        laundryRoomViewLayout.sectionInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
+        
+        laundryRoomView = UICollectionView(frame: .zero, collectionViewLayout: laundryRoomViewLayout)
+        laundryRoomView.allowsSelection = true
+        laundryRoomView.backgroundColor = .clear
+        laundryRoomView.register(LaundryRoomCollectionViewCell.self, forCellWithReuseIdentifier: laundryRoomViewReuseIdentifier)
+        laundryRoomView.dataSource = self
+        laundryRoomView.delegate = self
+        laundryRoomView.register(LaundryRoomHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: headerReuseIdentifier)
+        view.addSubview(laundryRoomView)
+        
     }
     
     func setUpConstraints() {
@@ -114,6 +130,13 @@ class ViewController: UIViewController {
             make.edges.equalTo(selectionView).inset(UIEdgeInsets(top: 5, left: 10, bottom: 5, right: 10))
         }
         
+        laundryRoomView.snp.makeConstraints { (make) -> Void in
+            make.top.equalTo(navigationView.snp.bottom)
+            make.bottom.equalToSuperview()
+            make.left.equalToSuperview()
+            make.right.equalToSuperview()
+        }
+        
     }
     
     func selectedLaundryRoom(index: Int, item: String) {
@@ -133,3 +156,40 @@ class ViewController: UIViewController {
 
 }
 
+extension ViewController: UICollectionViewDelegate {
+    
+}
+
+extension ViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let size = (laundryRoomView.frame.width - 45) / 2
+        return CGSize(width: size, height: size)
+    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        return CGSize(width: laundryRoomView.frame.width, height: 48)
+    }
+}
+
+extension ViewController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return fakeSectionedLaundryRooms[section].count
+    }
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return fakeSectionedLaundryRooms.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: laundryRoomViewReuseIdentifier, for: indexPath) as! LaundryRoomCollectionViewCell
+        //Cell Configure statement
+        cell.configure(image: (UIImage(named: fakeSectionedLaundryRooms[indexPath.section][indexPath.row]) ?? UIImage(named: "Court Hall"))!, text: fakeSectionedLaundryRooms[indexPath.section][indexPath.row] )
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: headerReuseIdentifier, for: indexPath) as! LaundryRoomHeaderView
+        header.label.text = fakeHeaders[indexPath.section]
+        return header
+    }
+    
+}
