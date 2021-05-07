@@ -11,6 +11,8 @@ class LaundryRoomCollectionViewCell: UICollectionViewCell {
     
     let buildingPhoto = UIImageView()
     let laundryRoom = UILabel()
+    let availableWashers = UILabel()
+    let availableDryers = UILabel()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -24,7 +26,8 @@ class LaundryRoomCollectionViewCell: UICollectionViewCell {
         
         layer.backgroundColor = UIColor.white.cgColor
         
-        
+        buildingPhoto.layer.cornerRadius = 8
+        buildingPhoto.layer.masksToBounds = true
         addSubview(buildingPhoto)
         
         laundryRoom.font = UIFont(name: "Roboto-Regular", size: 14)

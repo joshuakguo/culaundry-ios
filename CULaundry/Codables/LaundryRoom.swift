@@ -7,6 +7,7 @@
 
 struct LaundryRoomShort: Codable {
     let name: String
+    let lv_id: String
     let num_avail_wash: Int
     let num_avail_dry: Int
 }

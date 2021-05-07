@@ -10,5 +10,6 @@ struct LaundryMachine: Codable {
     let isWasher: Bool
     let isAvailable: Bool
     let isOOS: Bool
+    let isOffline: Bool
     let timeLeft: Int
 }

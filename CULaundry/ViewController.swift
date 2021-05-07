@@ -9,6 +9,10 @@ import UIKit
 import SnapKit
 import DropDown
 
+protocol LaundryRoomDelegate: AnyObject {
+    func setLaundryRoom(laundryRoom: LaundryRoomLong)
+}
+
 class ViewController: UIViewController {
     
     private let cornellRed: UIColor = UIColor(red: 179/255, green: 27/255, blue: 27/255, alpha: 1)
@@ -37,20 +41,25 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view.
         view.backgroundColor = UIColor(red: 240/255, green: 240/255, blue: 240/255, alpha: 1)
         
+        initData()
         createDummyData()
         setUpViews()
         setUpConstraints()
         
     }
     
+    func initData() {
+        //CREATE HALLS, CREATE MACHINES, UPDATE HALLS, GET ALL HALLS TO POPULATE allLaundryRoomData
+    }
+    
     func createDummyData() {
-        let Hall1 = LaundryRoomShort(name: "Balch Hall", num_avail_wash: 3, num_avail_dry: 4)
-        let Hall2 = LaundryRoomShort(name: "Bauer Hall", num_avail_wash: 4, num_avail_dry: 3)
-        let Hall3 = LaundryRoomShort(name: "Clara Dickson Hall", num_avail_wash: 5, num_avail_dry: 8)
-        let Hall4 = LaundryRoomShort(name: "Court Hall", num_avail_wash: 2, num_avail_dry: 1)
-        let Hall5 = LaundryRoomShort(name: "George Jameson Hall", num_avail_wash: 4, num_avail_dry: 4)
-        let Hall6 = LaundryRoomShort(name: "Mary Donlon Hall", num_avail_wash: 10, num_avail_dry: 9)
-        let Hall7 = LaundryRoomShort(name: "Kay Hall", num_avail_wash: 2, num_avail_dry: 1)
+        let Hall1 = LaundryRoomShort(name: "Balch Hall", lv_id: "1", num_avail_wash: 3, num_avail_dry: 4)
+        let Hall2 = LaundryRoomShort(name: "Bauer Hall", lv_id: "2", num_avail_wash: 4, num_avail_dry: 3)
+        let Hall3 = LaundryRoomShort(name: "Clara Dickson Hall", lv_id: "3", num_avail_wash: 5, num_avail_dry: 8)
+        let Hall4 = LaundryRoomShort(name: "Court Hall", lv_id: "4", num_avail_wash: 2, num_avail_dry: 1)
+        let Hall5 = LaundryRoomShort(name: "George Jameson Hall", lv_id: "5", num_avail_wash: 4, num_avail_dry: 4)
+        let Hall6 = LaundryRoomShort(name: "Mary Donlon Hall", lv_id: "6", num_avail_wash: 10, num_avail_dry: 9)
+        let Hall7 = LaundryRoomShort(name: "Kay Hall", lv_id: "7", num_avail_wash: 2, num_avail_dry: 1)
         allLaundryRoomData = [[Hall1, Hall2, Hall3, Hall4, Hall5, Hall6, Hall7]]
         
     }
@@ -173,7 +182,15 @@ class ViewController: UIViewController {
 }
 
 extension ViewController: UICollectionViewDelegate {
-    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//        indexpath tell us what the name of the selected laundry room is
+//        then use a dictionary to get from the name to the id for the GET request
+//        then use the GET request for indiv laundry rooms
+//        set the info in the created LaundryRoomVC then present it
+        let vc = LaundryRoomViewController()
+//        set the info here
+        present(vc, animated: true)
+    }
 }
 
 extension ViewController: UICollectionViewDelegateFlowLayout {
