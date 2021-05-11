@@ -6,16 +6,16 @@
 //
 
 struct PostResponse: Codable {
-    let success: String
+    let success: Bool
     let data: String
 }
 
 struct HallsResponse: Codable {
-    let success: String
+    let success: Bool
     let data: [LaundryRoomShort]
 }
 
 struct HallResponse: Codable {
-    let success: String
+    let success: Bool
     let data: LaundryRoomLong
 }

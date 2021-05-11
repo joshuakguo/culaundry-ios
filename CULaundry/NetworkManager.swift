@@ -9,9 +9,9 @@ import Foundation
 import Alamofire
 
 class NetworkManager {
-    static let host = ""
+    static let host: String = Secrets.hostname
     
-    static func createAllHalls(completion: @escaping (String) -> Void) {
+    static func createAllHalls(completion: @escaping (Bool) -> Void) {
         let endpoint = "\(host)create/halls/"
         AF.request(endpoint, method: .post, encoding: JSONEncoding.default).validate().responseData {
             response in
@@ -28,7 +28,7 @@ class NetworkManager {
         }
     }
     
-    static func createAllMachines(completion: @escaping (String) -> Void) {
+    static func createAllMachines(completion: @escaping (Bool) -> Void) {
         let endpoint = "\(host)create/machines/"
         AF.request(endpoint, method: .post, encoding: JSONEncoding.default).validate().responseData {
             response in
@@ -45,7 +45,7 @@ class NetworkManager {
         }
     }
     
-    static func updateAllHalls(completion: @escaping (String) -> Void) {
+    static func updateAllHalls(completion: @escaping (Bool) -> Void) {
         let endpoint = "\(host)update/halls/"
         AF.request(endpoint, method: .post, encoding: JSONEncoding.default).validate().responseData {
             response in
@@ -62,7 +62,7 @@ class NetworkManager {
         }
     }
     
-    static func updateAllMachines(completion: @escaping (String) -> Void) {
+    static func updateAllMachines(completion: @escaping (Bool) -> Void) {
         let endpoint = "\(host)update/machines/"
         AF.request(endpoint, method: .post, encoding: JSONEncoding.default).validate().responseData {
             response in

@@ -13,6 +13,30 @@ protocol LaundryRoomDelegate: AnyObject {
     func setLaundryRoom(laundryRoom: LaundryRoomLong)
 }
 
+//let hallidDictionary =
+//    ["Akwe:kon": "1638342",
+//     "Balch Hall North": "1638314",
+//     "Balch Hall South": "1638330",
+//"Bauer Hall", "1638358",
+//"Latino Living Center", "163833",
+//"Clara Dickson Hall", "1638321",
+//"Mary Donlon Hall", "1638322",
+//"George Jameson Hall", "1638324",
+//"High Rise 5", "1638325",
+//"Ecology House", "1638317",
+//"Kay Hall", "lv_id": "1638359",
+//"Ujamaa", "lv_id": "163837",
+//"Low Rise 6", "lv_id": "1638326",
+//"Low Rise 7", "lv_id": "1638312",
+//"HILC", "lv_id": "1638327",
+//"Just About Music", "lv_id": "1638310",
+//"Mews Hall A", "lv_id": "1638356",
+//"Mews Hall B", "lv_id": "1638357",
+//"Risley Hall", "lv_id": "1638328",
+//"Townhouse CC", "lv_id": "1638320",
+//"Townhouse E", "lv_id": "1638331",
+//"Townhouse G", "lv_id": "1638332"]
+
 class ViewController: UIViewController {
     
     private let cornellRed: UIColor = UIColor(red: 179/255, green: 27/255, blue: 27/255, alpha: 1)
@@ -42,14 +66,25 @@ class ViewController: UIViewController {
         view.backgroundColor = UIColor(red: 240/255, green: 240/255, blue: 240/255, alpha: 1)
         
         initData()
-        createDummyData()
+//        createDummyData()
         setUpViews()
         setUpConstraints()
-        
     }
     
+    //REFRESH FUNCTION UPDATE MACHINES, UPDATE HALLS, GET ALL HALLS
+    
     func initData() {
-        //CREATE HALLS, CREATE MACHINES, UPDATE HALLS, GET ALL HALLS TO POPULATE allLaundryRoomData
+//        NetworkManager.updateAllMachines { post in
+//            print("ok")
+//        }
+//        NetworkManager.updateAllHalls { post in
+//            print("ok")
+//        }
+        NetworkManager.getAllHalls { post in
+            self.allLaundryRoomData = [post]
+            self.laundryRoomView.reloadData()
+        }
+        //UPDATE HALLS, GET ALL HALLS TO POPULATE allLaundryRoomData
     }
     
     func createDummyData() {
@@ -189,6 +224,8 @@ extension ViewController: UICollectionViewDelegate {
 //        set the info in the created LaundryRoomVC then present it
         let vc = LaundryRoomViewController()
 //        set the info here
+        vc.laundryRoomName.text = allLaundryRoomData[indexPath.section][indexPath.row].name
+        vc.hallID = allLaundryRoomData[indexPath.section][indexPath.row].lv_id
         present(vc, animated: true)
     }
 }

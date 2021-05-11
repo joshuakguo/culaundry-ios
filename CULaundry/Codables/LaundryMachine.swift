@@ -7,9 +7,9 @@
 
 struct LaundryMachine: Codable {
     let machine_name: String
-    let isWasher: Bool
-    let isAvailable: Bool
-    let isOOS: Bool
-    let isOffline: Bool
+    let isWasher: Int
+    let isAvailable: Int
+    let isOOS: Int
+    let isOffline: Int
     let timeLeft: Int
 }

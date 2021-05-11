@@ -42,12 +42,13 @@ class LaundryRoomCollectionViewCell: UICollectionViewCell {
     func setUpConstraints() {
         buildingPhoto.snp.makeConstraints { (make) -> Void in
             make.top.equalToSuperview().offset(10)
-            make.height.width.equalTo(self.frame.width * 4 / 7)
+            make.width.equalTo(self.frame.width * 6 / 7)
+            make.height.equalTo(self.frame.height * 5 / 7)
             make.centerX.equalTo(self)
         }
         
         laundryRoom.snp.makeConstraints { (make) -> Void in
-            make.top.equalTo(buildingPhoto.snp.bottom).offset(5)
+            make.top.equalTo(buildingPhoto.snp.bottom).offset(8)
             make.right.equalTo(self)
             make.left.equalTo(self)
             make.height.equalTo(19)
