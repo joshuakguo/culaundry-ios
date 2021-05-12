@@ -16,7 +16,7 @@ class LaundryRoomHeaderView: UICollectionReusableView {
         
         label.text = ""
         label.textColor = UIColor(red: 20/255, green: 20/255, blue: 20/255, alpha: 1)
-        label.font = UIFont(name: "Roboto-Regular", size: 17)
+        label.font = UIFont.systemFont(ofSize: 17)
         addSubview(label)
         
         label.snp.makeConstraints { (make) -> Void in

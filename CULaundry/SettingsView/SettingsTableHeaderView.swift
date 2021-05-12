@@ -20,7 +20,7 @@ class SettingsTableHeaderView: UITableViewHeaderFooterView {
         addSubview(background)
         
         header.textColor = UIColor(red: 150/255, green: 150/255, blue: 150/255, alpha: 1)
-        header.font = UIFont(name: "Roboto-Regular", size: 13)
+        header.font = UIFont.systemFont(ofSize: 13)
         addSubview(header)
         
         background.snp.makeConstraints { (make) -> Void in

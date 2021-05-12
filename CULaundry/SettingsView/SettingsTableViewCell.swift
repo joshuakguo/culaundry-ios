@@ -23,7 +23,7 @@ class SettingsTableViewCell: UITableViewCell {
     }
     
     func setUpViews() {
-        cellText.font = UIFont(name: "Roboto-Regular", size: 15)
+        cellText.font = UIFont.systemFont(ofSize: 15)
         cellText.textColor = .black
         cellText.numberOfLines = 0
         contentView.addSubview(cellText)

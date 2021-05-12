@@ -9,36 +9,58 @@ import UIKit
 
 class MachineCollectionViewCell: UICollectionViewCell {
     
+    var isAvailable: Int = 0
+    var isOOS: Int = 0
+    var isOffline: Int = 0
+    var isWasher: Int = 0
+    var timeRemainingInt: Int = 0
+    
     let colorCode = UIView()
     let machine = UIImageView()
+    let machineCircle = UIImageView()
     let machineName = UILabel()
+    let timeRemaining = UILabel()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-//        layer.shadowColor = UIColor.lightGray.cgColor
-//        layer.shadowOffset = CGSize(width: 0, height: 2.0)
-//        layer.shadowRadius = 5.0
-//        layer.shadowOpacity = 1.0
-//        layer.masksToBounds = false
-//        layer.shadowPath = UIBezierPath(roundedRect: bounds, cornerRadius: contentView.layer.cornerRadius).cgPath
-//        layer.backgroundColor = UIColor.white.cgColor
-
         contentView.layer.masksToBounds = false
-//        layer.cornerRadius = 8
+
+        addSubview(machine)
         
-        backgroundColor = .blue
-        
-        machineName.textColor = .white
+        machineName.textColor = UIColor(red: 20/255, green: 20/255, blue: 20/255, alpha: 1)
         machineName.adjustsFontSizeToFitWidth = true
+        machineName.font = UIFont.boldSystemFont(ofSize: 16)
+        machineName.textAlignment = .left
         addSubview(machineName)
+        
+        timeRemaining.textColor = UIColor(red: 20/255, green: 20/255, blue: 20/255, alpha: 1)
+        timeRemaining.adjustsFontSizeToFitWidth = true
+        timeRemaining.font = UIFont.systemFont(ofSize: 10)
+        timeRemaining.textAlignment = .left
+        addSubview(timeRemaining)
         
         setUpConstraints()
     }
     
     func setUpConstraints() {
+        machine.snp.makeConstraints { (make) -> Void in
+            make.left.equalTo(self)
+            make.top.equalTo(self)
+            make.width.equalTo(72)
+            make.height.equalTo(73)
+        }
         machineName.snp.makeConstraints { (make) -> Void in
-            make.edges.equalTo(self).inset(UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5))
+            make.top.equalTo(self).offset(5)
+            make.left.equalTo(machine.snp.right).offset(5)
+            make.right.equalTo(self)
+            make.height.equalTo(19)
+        }
+        timeRemaining.snp.makeConstraints { (make) -> Void in
+            make.top.equalTo(machineName.snp.bottom).offset(5)
+            make.left.equalTo(machine.snp.right).offset(5)
+            make.right.equalTo(self)
+            make.height.equalTo(16)
         }
     }
     

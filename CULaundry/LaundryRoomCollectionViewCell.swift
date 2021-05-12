@@ -30,7 +30,7 @@ class LaundryRoomCollectionViewCell: UICollectionViewCell {
         buildingPhoto.layer.masksToBounds = true
         addSubview(buildingPhoto)
         
-        laundryRoom.font = UIFont(name: "Roboto-Regular", size: 14)
+        laundryRoom.font = UIFont.systemFont(ofSize: 14)
         laundryRoom.textColor = UIColor(red: 20/255, green: 20/255, blue: 20/255, alpha: 1)
         laundryRoom.textAlignment = .center
         addSubview(laundryRoom)

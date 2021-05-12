@@ -16,7 +16,9 @@ class LaundryRoomViewController: UIViewController {
     
     weak var delegate: LaundryRoomDelegate?
     
+    let laundryRoomBackground = UIView()
     let laundryRoomName = UILabel()
+    let dragDown = UIImageView()
     
     let machineLayout = UICollectionViewFlowLayout()
     var machineCollectionView: UICollectionView!
@@ -54,19 +56,27 @@ class LaundryRoomViewController: UIViewController {
     }
     
     func setUpViews() {
-        laundryRoomName.textColor = UIColor(red: 20/255, green: 20/255, blue: 20/255, alpha: 1)
-        laundryRoomName.font = UIFont(name: "Roboto-Black", size: 35)
+        laundryRoomBackground.backgroundColor = UIColor(red: 93/255, green: 117/255, blue: 1, alpha: 1)
+        view.addSubview(laundryRoomBackground)
+        
+        laundryRoomName.textColor = .white
+        laundryRoomName.font = UIFont.boldSystemFont(ofSize: 35)
         laundryRoomName.textAlignment = .left
         laundryRoomName.adjustsFontSizeToFitWidth = true
         view.addSubview(laundryRoomName)
         
+        dragDown.image = UIImage(systemName: "chevron.compact.down")
+        dragDown.tintColor = .white
+        view.addSubview(dragDown)
+        
         machineLayout.scrollDirection = .vertical
         machineLayout.minimumLineSpacing = 10
         machineLayout.minimumInteritemSpacing = 10
-        machineLayout.sectionInset = UIEdgeInsets(top: 0, left: 5, bottom: 35, right: 5)
+        machineLayout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 35, right: 0)
         
         machineCollectionView = UICollectionView(frame: .zero, collectionViewLayout: machineLayout)
-        machineCollectionView.allowsSelection = false
+        machineCollectionView.allowsSelection = true
+        machineCollectionView.allowsMultipleSelection = false
         machineCollectionView.backgroundColor = .clear
         machineCollectionView.register(MachineCollectionViewCell.self, forCellWithReuseIdentifier: machineReuseIdentifier)
         machineCollectionView.dataSource = self
@@ -77,16 +87,31 @@ class LaundryRoomViewController: UIViewController {
     
     func setUpConstraints() {
         machineCollectionView.snp.makeConstraints { (make) -> Void in
-            make.edges.equalTo(view).inset(UIEdgeInsets(top: 120, left: 35, bottom: 0, right: 35))
+            make.edges.equalTo(view).inset(UIEdgeInsets(top: 170, left: 30, bottom: 0, right: 30))
+        }
+        laundryRoomBackground.snp.makeConstraints { (make) -> Void in
+            make.height.equalTo(150)
+            make.top.equalToSuperview()
+            make.right.equalToSuperview()
+            make.left.equalToSuperview()
         }
         laundryRoomName.snp.makeConstraints { (make) -> Void in
-            make.top.equalTo(view).offset(15)
-            make.right.equalTo(machineCollectionView).offset(5)
+            make.top.equalTo(view).offset(90)
+            make.right.equalTo(machineCollectionView)
             make.left.equalTo(machineCollectionView).offset(5)
             make.height.equalTo(50)
         }
+        dragDown.snp.makeConstraints { (make) -> Void in
+            make.top.equalToSuperview()
+            make.centerX.equalToSuperview()
+            make.width.equalTo(50)
+            make.height.equalTo(30)
+        }
     }
     
+}
+
+extension LaundryRoomViewController: UICollectionViewDelegate {
 }
 
 extension LaundryRoomViewController: UICollectionViewDataSource {
@@ -106,8 +131,58 @@ extension LaundryRoomViewController: UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: machineReuseIdentifier, for: indexPath) as! MachineCollectionViewCell
         if indexPath.section == 0 {
             cell.machineName.text = washers[indexPath.row].machine_name
+            cell.timeRemainingInt = washers[indexPath.row].timeLeft
+            cell.isAvailable = washers[indexPath.row].isAvailable
+            cell.isOOS = washers[indexPath.row].isOOS
+            cell.isOffline = washers[indexPath.row].isOffline
+            cell.isWasher = 1
+            if cell.isAvailable == 0 && cell.isOOS == 0 && cell.isOffline == 0 {
+                cell.timeRemaining.text = String(cell.timeRemainingInt) + " min"
+                cell.machineName.text?.append(" - In Use")
+            } else if cell.isAvailable == 1 && cell.isOOS == 0 && cell.isOffline == 0 {
+                cell.timeRemaining.text = "Available"
+                cell.machineName.text?.append(" - Open")
+            } else if cell.isOOS == 1 && cell.isOffline == 0 {
+                cell.timeRemaining.text = "Out of Service"
+                cell.machineName.text?.append(" - OOS")
+            } else if cell.isOffline == 1 && cell.isOOS == 0 {
+                cell.timeRemaining.text = "Offline"
+                cell.machineName.text?.append(" - Offline")
+            }
+            if cell.isAvailable == 1 && cell.isOOS == 0 && cell.isOffline == 0 {
+                cell.machine.image = UIImage(named: "Washer2Green")
+            } else if cell.isOOS == 1 || cell.isOffline == 1 {
+                cell.machine.image = UIImage(named: "Washer2")
+            } else {
+                cell.machine.image = UIImage(named: "Washer2Red")
+            }
         } else {
             cell.machineName.text = dryers[indexPath.row].machine_name
+            cell.timeRemainingInt = dryers[indexPath.row].timeLeft
+            cell.isAvailable = dryers[indexPath.row].isAvailable
+            cell.isOOS = dryers[indexPath.row].isOOS
+            cell.isOffline = dryers[indexPath.row].isOffline
+            cell.isWasher = 0
+            if cell.isAvailable == 0 && cell.isOOS == 0 && cell.isOffline == 0 {
+                cell.timeRemaining.text = String(cell.timeRemainingInt) + " min"
+                cell.machineName.text?.append(" - In Use")
+            } else if cell.isAvailable == 1 && cell.isOOS == 0 && cell.isOffline == 0 {
+                cell.timeRemaining.text = "Available"
+                cell.machineName.text?.append(" - Open")
+            } else if cell.isOOS == 1 && cell.isOffline == 0 {
+                cell.timeRemaining.text = "Out of Service"
+                cell.machineName.text?.append(" - OOS")
+            } else if cell.isOffline == 1 && cell.isOOS == 0 {
+                cell.timeRemaining.text = "Offline"
+                cell.machineName.text?.append(" - Offline")
+            }
+            if cell.isAvailable == 1 && cell.isOOS == 0 && cell.isOffline == 0 {
+                cell.machine.image = UIImage(named: "Dryer2Green")
+            } else if cell.isOOS == 1 || cell.isOffline == 1 {
+                cell.machine.image = UIImage(named: "Dryer2")
+            } else {
+                cell.machine.image = UIImage(named: "Dryer2Red")
+            }
         }
         return cell
     }
@@ -125,8 +200,8 @@ extension LaundryRoomViewController: UICollectionViewDataSource {
 
 extension LaundryRoomViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let size = (machineCollectionView.frame.width - 40) / 4
-        return CGSize(width: size, height: size)
+        let size = (machineCollectionView.frame.width - 10) / 2
+        return CGSize(width: size, height: (size / 2) + 15)
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {

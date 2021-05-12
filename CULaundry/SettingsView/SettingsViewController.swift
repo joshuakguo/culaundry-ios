@@ -9,14 +9,14 @@ import UIKit
 
 class SettingsViewController: UIViewController {
     
-    private let cornellRed: UIColor = UIColor(red: 179/255, green: 27/255, blue: 27/255, alpha: 1)
-    
     let sectionSeparatorHeight: CGFloat = 40
     
     let settingsTableView = UITableView(frame: CGRect(), style: .grouped)
     let settingsReuseIdentifier = "settingsReuseIdentifier"
-    let settingsData = [["This is a test. This is going to be a really long entry to see if it the changes the row cell height.", "How do I make a hyperlink"], ["Things aren't working as they should", "I don't like this"]]
+    let settingsData = [["Created for the AppDev SP21 Hack Challenge by Connor Chen (cjc353), Joshua Guo (jcg294), and Michelle Sun (mss455).", "iOS Frontend Github Repo", "Backend Github Repo"], ["Things aren't working as they should", "I don't like this"]]
     let settingsHeaderData = ["ABOUT US", "HELP ME"]
+    
+    let settingsURLArray = ["https://github.com/joshuakguo/culaundry-ios", "https://github.com/connorjchen/culaundry-backend"]
     
     let headerReuseIdentifier = "headerReuseIdentifier"
 
@@ -34,8 +34,8 @@ class SettingsViewController: UIViewController {
     func setUpViews() {
         let appearance = UINavigationBarAppearance()
         appearance.configureWithTransparentBackground()
-        appearance.backgroundColor = cornellRed
-        appearance.titleTextAttributes = [.foregroundColor: UIColor.white, .font : UIFont(name: "Roboto-Bold", size: 14)!]
+        appearance.backgroundColor = UIColor(red: 93/255, green: 117/255, blue: 1, alpha: 1)
+        appearance.titleTextAttributes = [.foregroundColor: UIColor.white, .font : UIFont.boldSystemFont(ofSize: 14)]
         navigationItem.standardAppearance = appearance
         navigationItem.scrollEdgeAppearance = appearance
         navigationItem.compactAppearance = appearance
@@ -46,7 +46,6 @@ class SettingsViewController: UIViewController {
         settingsTableView.rowHeight = UITableView.automaticDimension
         settingsTableView.estimatedRowHeight = UITableView.automaticDimension
         settingsTableView.sectionHeaderHeight = sectionSeparatorHeight
-//        settingsTableView.estimatedSectionHeaderHeight = UITableView.automaticDimension
         
         settingsTableView.register(SettingsTableViewCell.self, forCellReuseIdentifier: settingsReuseIdentifier)
         settingsTableView.delegate = self
@@ -68,7 +67,14 @@ class SettingsViewController: UIViewController {
 }
 
 extension SettingsViewController: UITableViewDelegate {
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.section == 0 && (indexPath.row == 1 || indexPath.row == 2) {
+            let urlString = self.settingsURLArray[indexPath.row - 1]
+            if let url = URL(string: urlString) {
+                    UIApplication.shared.open(url)
+            }
+        }
+    }
 }
 
 extension SettingsViewController: UITableViewDataSource {
@@ -83,7 +89,7 @@ extension SettingsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: settingsReuseIdentifier, for: indexPath) as! SettingsTableViewCell
         cell.configure(with: settingsData[indexPath.section][indexPath.row])
-        if indexPath.section == 1 && indexPath.row == 2 {
+        if indexPath.section == 0 && (indexPath.row == 1 || indexPath.row == 2) {
             cell.accessoryType = .disclosureIndicator
         }
         return cell
