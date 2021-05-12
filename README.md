@@ -4,5 +4,30 @@
 
 Created for the AppDev SP21 Hack Challenge by Joshua Guo (jcg294), Connor Chen (cjc353), and Michelle Sun (mss455).
 
+### Description
+
+There are few feelings as frustrating as going to the laundry room with your hamper only to find that every machine is either full or out of service. Annoyed, you trek back to your room. While LaundryView already offers a solution, they do not have a mobile app. Such lack of a mobile app has kept it from widespread use. This was our attempt to create a simple mobile solution. The status of every machine of every laundry room (currently only North Campus) can be viewed so you know exactly which machines are taken, broken, or available. (Subject to the availability of the LaundryView online service) 
+
+### Screenshots
+
+<p float="left">
+  <img src="https://github.com/joshuakguo/culaundry-ios/blob/689d1aa0f8b7536146e49c93962674fbec938aaf/Assets/Screenshot1.png" width="300" />
+  <img src="https://github.com/joshuakguo/culaundry-ios/blob/689d1aa0f8b7536146e49c93962674fbec938aaf/Assets/Screenshot2.png" width="300" /> 
+</p>
+
+### Demo
+
+<p float="left">
+  <img src="https://github.com/joshuakguo/culaundry-ios/blob/689d1aa0f8b7536146e49c93962674fbec938aaf/Assets/gif2.gif" width="300" />
+  <img src="https://github.com/joshuakguo/culaundry-ios/blob/689d1aa0f8b7536146e49c93962674fbec938aaf/Assets/gif1.gif" width="300" /> 
+</p>
+
+### Hack Challenge Requirements
+
+ - AutoLayout using SnapKit
+ - Two UICollectionViews and two UITableViews
+ - Navigation using UINavigationController
+ - Integration with CULaundry backend
+
 ### Backend for CULaundry
 Created by Connor Chen (cjc353) which can be viewed [here](https://github.com/connorjchen/culaundry-backend).
