@@ -13,8 +13,8 @@ class SettingsViewController: UIViewController {
     
     let settingsTableView = UITableView(frame: CGRect(), style: .grouped)
     let settingsReuseIdentifier = "settingsReuseIdentifier"
-    let settingsData = [["Created for the AppDev SP21 Hack Challenge by Connor Chen (cjc353), Joshua Guo (jcg294), and Michelle Sun (mss455).", "iOS Frontend Github Repo", "Backend Github Repo"], ["Things aren't working as they should", "I don't like this"]]
-    let settingsHeaderData = ["ABOUT US", "HELP ME"]
+    let settingsData = [["Created for the AppDev SP21 Hack Challenge by Connor Chen (cjc353), Joshua Guo (jcg294), and Michelle Sun (mss455).", "iOS Frontend Github Repo", "Backend Github Repo"], ["There should be settings here but there's nothing for you to change.", "Why are you reading this?"]]
+    let settingsHeaderData = ["ABOUT US", "SETTINGS"]
     
     let settingsURLArray = ["https://github.com/joshuakguo/culaundry-ios", "https://github.com/connorjchen/culaundry-backend"]
     

@@ -28,6 +28,7 @@ class LaundryRoomCollectionViewCell: UICollectionViewCell {
         
         buildingPhoto.layer.cornerRadius = 8
         buildingPhoto.layer.masksToBounds = true
+        buildingPhoto.contentMode = .scaleAspectFill
         addSubview(buildingPhoto)
         
         laundryRoom.font = UIFont.systemFont(ofSize: 14)
