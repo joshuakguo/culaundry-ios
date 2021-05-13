@@ -9,7 +9,7 @@ import Foundation
 import Alamofire
 
 class NetworkManager {
-    static let host: String = Secrets.hostname
+    static let host: String = "https://culaundry.herokuapp.com/api/"
     
     static func createAllHalls(completion: @escaping (Bool) -> Void) {
         let endpoint = "\(host)create/halls/"
