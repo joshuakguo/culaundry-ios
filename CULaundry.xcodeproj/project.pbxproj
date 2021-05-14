@@ -32,7 +32,6 @@
 		6DF400372645E26400F14B8A /* Responses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF400362645E26400F14B8A /* Responses.swift */; };
 		6DF400392649CCB900F14B8A /* MachineCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF400382649CCB900F14B8A /* MachineCollectionViewCell.swift */; };
 		6DF4003C2649D7F600F14B8A /* MachineHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF4003B2649D7F600F14B8A /* MachineHeaderView.swift */; };
-		6DF4003E264A337400F14B8A /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF4003D264A337400F14B8A /* Secrets.swift */; };
 		6DF4FFF2263C57AB00F14B8A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF4FFF1263C57AB00F14B8A /* AppDelegate.swift */; };
 		6DF4FFF4263C57AB00F14B8A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF4FFF3263C57AB00F14B8A /* SceneDelegate.swift */; };
 		6DF4FFF6263C57AB00F14B8A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF4FFF5263C57AB00F14B8A /* ViewController.swift */; };
@@ -325,7 +324,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				6DF40028264222D300F14B8A /* LaundryRoomCollectionViewCell.swift in Sources */,
-				6DF4003E264A337400F14B8A /* Secrets.swift in Sources */,
 				6DF4FFF6263C57AB00F14B8A /* ViewController.swift in Sources */,
 				6DF4002E2643332400F14B8A /* LaundryRoom.swift in Sources */,
 				6DF4FFF2263C57AB00F14B8A /* AppDelegate.swift in Sources */,
